@@ -9,14 +9,14 @@ const config = {
   entry: "./app/app.js",
   output: {
     filename: "myBundle.[hash].js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "doc")
   },
   plugins: [new HtmlWebpackPlugin({ template: "./app/index.html" })],
   mode: "development",
   devtool: "eval-cheap-source-map",
   devServer: {
     port: 8080,
-    contentBase: path.resolve(__dirname, "dist"),
+    contentBase: path.resolve(__dirname, "doc"),
     hot: true
   },
   module: {
