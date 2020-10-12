@@ -38,7 +38,7 @@ function App() {
         </div>
         <div>Choose how to display the Lye Concentration</div>
         <div onChange={test}>
-          <input type="radio" id="lyePercentage" name="lyeUnits" value="33.33%" defaultChecked />
+          <input type="radio" id="lyePercentage" name="lyeUnits" value="33.33%" />
           Percentage
           <input type="radio" id="lyeRatio" name="lyeUnits" value="2:1" />
           Ratio
@@ -48,6 +48,7 @@ function App() {
           <input id="lyeConcentration" defaultValue={lyeConcentration} type="text" className="lyeConcentration" autoComplete="off" />
         </div>
         <div>
+          <label htmlFor={"oilName " + oilNumber}>{"Oil " + oilNumber}</label>
           <input id={"oilName " + oilNumber} defaultValue="" type="text" className="oilName" autoComplete="off" />
         </div>
         <button>Submit</button>
