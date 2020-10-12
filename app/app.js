@@ -4,27 +4,52 @@ import ReactDOM from "react-dom";
 import ProgressBar from "./components/ProgressBar";
 
 function App() {
-  const [score, setScore] = useState(0);
-  const [mistakes, setMistakes] = useState(0);
-  let fred = 1;
+  const [recipeName, setRecipeName] = useState(0);
+  const [recipeSource, setRecipeSource] = useState(0);
+  const [lyeConcentration, setLyeConcentration] = useState();
+  const [lyeUnits, setLyeUnits] = useState("percentage");
+  const [oilName, setOilName] = useState(0);
+  let oilNumber = 1;
 
   function calculateLye(max) {
     return Math.floor(Math.random() * (max + 1));
   }
 
+  function test(e) {
+    setLyeConcentration(e.target.value);
+    ReactDOM.render(<App />, document.getElementById("app"));
+    return;
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
-
-    answerField.current.focus();
-
-    let correctAnswer;
   }
 
   return (
     <>
       <form onSubmit={handleSubmit} action="" className="our-form">
-        <label htmlFor="oilName">Oil {fred}</label>
-        <input id={"oilName " + fred} defaultValue="" type="text" className="oilName" autoComplete="off" />
+        <div>
+          <label htmlFor="recipeName">Recipe Name</label>
+          <input id="recipeName" type="text" />
+        </div>
+        <div>
+          <label htmlFor="recipeSource">Created By</label>
+          <input id="recipeSource" type="text" />
+        </div>
+        <div>Choose how to display the Lye Concentration</div>
+        <div onChange={test}>
+          <input type="radio" id="lyePercentage" name="lyeUnits" value="33.33%" defaultChecked />
+          Percentage
+          <input type="radio" id="lyeRatio" name="lyeUnits" value="2:1" />
+          Ratio
+        </div>
+        <div>
+          <label htmlFor="lyeConcentration">Lye Concentration</label>
+          <input id="lyeConcentration" defaultValue={lyeConcentration} type="text" className="lyeConcentration" autoComplete="off" />
+        </div>
+        <div>
+          <input id={"oilName " + oilNumber} defaultValue="" type="text" className="oilName" autoComplete="off" />
+        </div>
         <button>Submit</button>
       </form>
     </>
